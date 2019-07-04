@@ -40,4 +40,18 @@ A user should be able to
 - Click confirm reservation and have the reservation held for them for five minutes
 
 ## MongoDB Data Schema
-MongoDB is the best choice for storing this data because  MongoDB is ideal for situations where you expect high write loads
+MongoDB is the best choice for storing this data because  MongoDB is ideal for situations where you expect high write loads.
+
+Reservation data is very dynamic. Customers can create new reservations, cancel reservations, and update reservations unexpectedly and MongoDB can accommodate that.
+
+Mongoose Schema
+```
+{
+  _id: number,
+  bookings: [{booking_time: date, party_qty: number}],
+  time_intervals: number,
+  restaurant_open_time: number,
+  restaurant_close_time: number,
+  restaurant_id: number
+}
+```
