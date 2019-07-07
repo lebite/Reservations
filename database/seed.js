@@ -42,6 +42,7 @@ function seedReservations() {
   ];
   // Time interval restaurant expects between bookings
   const timeIntervals = [5, 10, 15, 30];
+
   // Other useful constants
   const minSeating = 15;
   const maxSeating = 100;

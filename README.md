@@ -1,5 +1,11 @@
 # Reservation Module
 
+`GET /`
+
+**Input**: none
+
+**Output**: `bundle.js` which can be used by proxy servers
+
 `GET /:restaurant_id/reservations`
 
 **Input**: `restaurant_id` which will be used to look for a particular restaurant’s availability
@@ -38,6 +44,7 @@
   ]
 }
 ```
+
 `POST /:restaurant_id/reservations`
 
 **Inputs**: 
