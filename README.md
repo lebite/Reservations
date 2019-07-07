@@ -1,5 +1,11 @@
 # Reservation Module
 
+`GET /`
+
+**Input**: none
+
+**Output**: `bundle.js` which can be used by proxy servers
+
 `GET /:restaurant_id/reservations`
 
 **Input**: `restaurant_id` which will be used to look for a particular restaurant’s availability
@@ -8,11 +14,37 @@
 
 ```
 {
-  “restaurant_id”: <number>,
-  “date_booking_count” : <number>,
-  “available_times”: [<datetime>, <datetime>, ...]
+  "restaurant_id": <number>,
+  "restaurant_information": {
+    "restaurant_open_time": {
+      "hour": <number>,
+      "minute": <number>
+    },
+    "restaurant_close_time": {
+      "hour": <number>,
+      "minute": <number>
+    },
+    "time_intervals": <number>,
+    "max_seating": <number>,
+    "max_party_size": <number>
+  },
+  "bookings": [
+    {
+      "_id": <string>,
+      "booking_time": <datetime>,
+      "party_qty": <number>,
+      "restaurant_id": <number>
+    },
+    {
+      "_id": <string>,
+      "booking_time": <datetime>,
+      "party_qty": <number>,
+      "restaurant_id": <number>
+    }, ...
+  ]
 }
 ```
+
 `POST /:restaurant_id/reservations`
 
 **Inputs**: 
@@ -22,9 +54,14 @@
 **Output**: JSON with the times after the selected date/time with that are available to book
 ```
 {
-  “restaurant_id”: <number>,
-  “date_booking_count” : <number>,
-  “available_times”: [<datetime>, <datetime>, ...]
+  "bookings": [
+    {
+      "_id": <string>,
+      "booking_time": <datetime>,
+      "party_qty": <number>,
+      "restaurant_id": <number>
+    }, ...
+  ]
 }
 ```
 ### Bare Minimum Requirements: 
@@ -44,14 +81,24 @@ MongoDB is the best choice for storing this data because  MongoDB is ideal for s
 
 Reservation data is very dynamic. Customers can create new reservations, cancel reservations, and update reservations unexpectedly and MongoDB can accommodate that.
 
-Mongoose Schema
+
+### Restaurant Schema
 ```
 {
-  _id: number,
-  bookings: [{booking_time: date, party_qty: number}],
-  time_intervals: number,
-  restaurant_open_time: number,
-  restaurant_close_time: number,
-  restaurant_id: number
+  _id: Number,
+  time_intervals: Number,
+  max_seating: Number,
+  max_party_size: Number,
+  restaurant_open_time: { hour: Number, minute: Number },
+  restaurant_close_time: { hour: Number, minute: Number },
+}
+```
+
+### Reservation Schema
+```
+{
+  booking_time: Date,
+  party_qty: Number,
+  restaurant_id: Number,
 }
 ```
