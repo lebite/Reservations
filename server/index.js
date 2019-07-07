@@ -24,8 +24,6 @@ app.get('/:restaurant_id/reservations', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      console.log((restaurant[0]));
-      console.log((restaurant[0].close_time));
       Reservation.find({
         restaurant_id: restaurantId,
         booking_time: {
@@ -48,9 +46,24 @@ app.get('/:restaurant_id/reservations', (req, res) => {
 });
 
 app.post('/:restaurant_id/reservations', (req, res) => {
-  console.log(req.body);
+  const restaurantId = req.params.restaurant_id;
 
-  res.sendStatus(200);
+  Reservation.find({
+    restaurant_id: restaurantId,
+    booking_time: {
+      $gte: moment(req.body),
+      $lte: moment(req.body).add(2, 'hour').add(30, 'minute'),
+    },
+  }, function (err, reservations) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        restaurant_id: restaurantId,
+        bookings: reservations,
+      });
+    }
+  });
 });
 
 app.listen(PORT, () => {
