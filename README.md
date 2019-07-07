@@ -9,21 +9,19 @@
 ```
 {
   "restaurant_id": <number>,
-  "restaurant_information": [
-    {
-      "restaurant_open_time": {
-        "hour": <number>,
-        "minute": <number>
-      },
-      "restaurant_close_time": {
-        "hour": <number>,
-        "minute": <number>
-      },
-      "time_intervals": <number>,
-      "max_seating": <number>,
-      "max_party_size": <number>
-    }
-  ],
+  "restaurant_information": {
+    "restaurant_open_time": {
+      "hour": <number>,
+      "minute": <number>
+    },
+    "restaurant_close_time": {
+      "hour": <number>,
+      "minute": <number>
+    },
+    "time_intervals": <number>,
+    "max_seating": <number>,
+    "max_party_size": <number>
+  },
   "bookings": [
     {
       "_id": <string>,

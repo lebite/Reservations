@@ -1,12 +1,27 @@
 /**
  * Seed the database
  */
-const faker = require('faker');
 const moment = require('moment');
 
 const { Reservation } = require('./index');
 const { Restaurant } = require('./index');
 
+/**
+ * From: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+ * The maximum is exclusive and the minimum is inclusive
+ * @param {number} minimum
+ * @param {number} maximum
+ */
+function getRandomInt(minimum, maximum) {
+  const min = Math.ceil(minimum);
+  const max = Math.floor(maximum);
+
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ *
+ */
 function seedReservations() {
   // hardcoded open and close times to choose from
   const openTimes = [
@@ -25,6 +40,13 @@ function seedReservations() {
     { hour: 20, minute: 30 },
     { hour: 21, minute: 0 },
   ];
+  // Time interval restaurant expects between bookings
+  const timeIntervals = [5, 10, 15, 30];
+  // Other useful constants
+  const minSeating = 15;
+  const maxSeating = 100;
+  const minPartySize = 4;
+  const maxPartySize = 10;
 
   // create 100 restaurants and 2 to 10 reservations per restaurant
   let restaurants = [];
@@ -33,22 +55,27 @@ function seedReservations() {
   for (let i = 0; i < 100; i += 1) {
     const newRestaurant = {
       _id: i,
-      time_intervals: 15,
-      max_seating: faker.random.number({ min: 15, max: 100 }),
-      max_party_size: faker.random.number({ min: 4, max: 10 }),
-      restaurant_open_time: faker.random.arrayElement(openTimes),
-      restaurant_close_time: faker.random.arrayElement(closeTimes),
+      time_intervals: timeIntervals[getRandomInt(0, timeIntervals.length)],
+      max_seating: getRandomInt(minSeating, maxSeating + 1), // +1 because of getRandomInt
+      max_party_size: getRandomInt(minPartySize, maxPartySize + 1), // +1 because of getRandomInt
+      open_time: openTimes[getRandomInt(0, openTimes.length)],
+      close_time: closeTimes[getRandomInt(0, closeTimes.length)],
     };
     restaurants.push(newRestaurant);
 
-    const numReservations = faker.random.number({ min: 2, max: 10 });
+    const numReservations = getRandomInt(2, 10);
+
     for (let j = 0; j < numReservations; j += 1) {
+      // use Moment.js to create valid booking time
+      const hourOffset = getRandomInt(0, newRestaurant.close_time - newRestaurant.open_time);
+      const minuteOffset = getRandomInt(0, 60);
+      const randomTime = moment(newRestaurant.restaurant_open_time)
+        .add(hourOffset, 'hour')
+        .add(minuteOffset, 'minute');
+
       reservations.push({
-        booking_time: faker.date.between(
-          moment(newRestaurant.restaurant_open_time),
-          moment(newRestaurant.restaurant_close_time),
-        ),
-        party_qty: faker.random.number({ min: 1, max: newRestaurant.max_party_size }),
+        booking_time: randomTime,
+        party_qty: getRandomInt(1, newRestaurant.max_party_size),
         restaurant_id: i,
       });
     }

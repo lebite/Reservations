@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
 const express = require('express');
 const morgan = require('morgan');
@@ -18,15 +19,18 @@ app.use(express.static(path.join(__dirname, '/../client/')));
 
 app.get('/:restaurant_id/reservations', (req, res) => {
   const restaurantId = req.params.restaurant_id;
+
   Restaurant.find({ _id: restaurantId }, function (err, restaurant) {
     if (err) {
       res.send(err);
     } else {
+      console.log((restaurant[0]));
+      console.log((restaurant[0].close_time));
       Reservation.find({
         restaurant_id: restaurantId,
         booking_time: {
-          $gte: moment().valueOf(),
-          $lte: moment(restaurant.restaurant_close_time).valueOf(),
+          $gte: moment(restaurant[0].open_time),
+          $lte: moment(restaurant[0].close_time),
         },
       }, function (err, reservations) {
         if (err) {
@@ -34,7 +38,7 @@ app.get('/:restaurant_id/reservations', (req, res) => {
         } else {
           res.send({
             restaurant_id: restaurantId,
-            restaurant_information: restaurant,
+            restaurant_information: restaurant[0],
             bookings: reservations,
           });
         }
@@ -44,6 +48,8 @@ app.get('/:restaurant_id/reservations', (req, res) => {
 });
 
 app.post('/:restaurant_id/reservations', (req, res) => {
+  console.log(req.body);
+
   res.sendStatus(200);
 });
 

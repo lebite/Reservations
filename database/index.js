@@ -11,8 +11,8 @@ const restaurantSchema = mongoose.Schema({
   time_intervals: Number,
   max_seating: Number,
   max_party_size: Number,
-  restaurant_open_time: { hour: Number, minute: Number },
-  restaurant_close_time: { hour: Number, minute: Number },
+  open_time: { hour: Number, minute: Number },
+  close_time: { hour: Number, minute: Number },
 });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
