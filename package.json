@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "react-dev": "webpack -d --watch --progress --colors",
     "seed": "node ./database/seed.js",
     "start": "nodemon ./server/index.js",
     "test": "jest"
@@ -19,9 +20,10 @@
   },
   "homepage": "https://github.com/reservly/reservation#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "babel-preset-react": "^6.24.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.0",
@@ -30,7 +32,8 @@
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "react-test-renderer": "^16.8.6",
-    "webpack": "^4.35.2"
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
