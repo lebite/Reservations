@@ -49,8 +49,8 @@ app.post('/:restaurant_id/reservations', (req, res) => {
   Reservation.find({
     restaurant_id: restaurantId,
     booking_time: {
-      $gte: moment(req.body),
-      $lte: moment(req.body).add(2, 'hour').add(30, 'minute'),
+      $gte: moment(req.body.date),
+      $lte: moment(req.body.date).add(2, 'hour').add(30, 'minute'),
     },
   }, function (err, reservations) {
     if (err) {
