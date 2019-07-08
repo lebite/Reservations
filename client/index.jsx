@@ -17,4 +17,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App/>, document.getElementById('reservation'));
+export default App;

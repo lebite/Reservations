@@ -1,7 +1,12 @@
-/* eslint-disable eol-last */
-/* eslint-disable no-undef */
-const client = require('../../client/index');
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-test('client tests run', () => {
-  expect(true).toBe(true);
+import App from '../../client/index';
+
+describe('App component', () => {
+  it('renders', () => {
+    const component = renderer.create(<App></App>);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
