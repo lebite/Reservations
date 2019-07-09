@@ -3,7 +3,13 @@
 exports[`App component renders 1`] = `
 <div>
   <h1>
-    Reservation Module
+    Make a reservation
   </h1>
+  <div>
+    {"open_time":{"hour":0,"minute":0},"close_time":{"hour":0,"minute":0},"time_intervals":0,"max_seating":0,"max_party_size":0}
+  </div>
+  <div>
+    [{"booking_time":null,"party_qty":0}]
+  </div>
 </div>
 `;

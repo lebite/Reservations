@@ -11,7 +11,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '/../client/')));
+app.use(express.static(path.join(__dirname, '/../public/')));
 
 app.get('/:restaurant_id/reservations', (req, res) => {
   const restaurantId = req.params.restaurant_id;
