@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReservationForm component renders with no errors when valid restaurant passed in 1`] = `
+<div>
+  {"open_time":{"hour":0,"minute":0},"close_time":{"hour":0,"minute":0},"time_intervals":0,"max_seating":0,"max_party_size":0}
+</div>
+`;
+
+exports[`ReservationForm component renders with no errors with valid restaurant 1`] = `
+<div>
+  {"open_time":{"hour":0,"minute":0},"close_time":{"hour":0,"minute":0},"time_intervals":0,"max_seating":0,"max_party_size":0}
+</div>
+`;
