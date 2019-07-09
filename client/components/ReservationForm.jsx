@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ReservationForm = ({ restaurant }) => (
   <div>
-    {restaurant}
+    {JSON.stringify(restaurant)}
   </div>
 );
 

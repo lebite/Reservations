@@ -7,8 +7,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: {},
-      bookings: [],
+      restaurant: {
+        open_time: {
+          hour: 0,
+          minute: 0,
+        },
+        close_time: {
+          hour: 0,
+          minute: 0,
+        },
+        time_intervals: 0,
+        max_seating: 0,
+        max_party_size: 0,
+      },
+      bookings: [{
+        booking_time: null,
+        party_qty: 0,
+      }],
     };
   }
 
