@@ -1,7 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import ReservationForm from './ReservationForm.jsx';
 import TimesList from './TimesList.jsx';
+
+const Wrapper = styled.section`
+  width: 320px;
+  box-shadow: 0 2px 8px rgba(153, 153, 153, .4);
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -35,11 +41,11 @@ class App extends React.Component {
     const { restaurant } = this.state;
     const { bookings } = this.state;
     return (
-      <div>
+      <Wrapper>
         <h1>Make a reservation</h1>
         <ReservationForm restaurant={restaurant} />
         <TimesList bookings={bookings} />
-      </div>
+      </Wrapper>
     );
   }
 }
