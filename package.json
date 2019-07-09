@@ -33,6 +33,7 @@
     "node-mocks-http": "^1.7.6",
     "nodemon": "^1.19.1",
     "react-test-renderer": "^16.8.6",
+    "supertest": "^4.0.2",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5"
   },
