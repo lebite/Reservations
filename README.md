@@ -106,8 +106,9 @@ Reservation data is very dynamic. Customers can create new reservations, cancel 
   time_intervals: Number,
   max_seating: Number,
   max_party_size: Number,
-  restaurant_open_time: { hour: Number, minute: Number },
-  restaurant_close_time: { hour: Number, minute: Number },
+  open_time: { hour: Number, minute: Number },
+  close_time: { hour: Number, minute: Number },
+  max_time_range: Number,
 }
 ```
 

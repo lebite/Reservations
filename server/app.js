@@ -23,8 +23,8 @@ app.get('/:restaurant_id/reservations', (req, res) => {
       Reservation.find({
         restaurant_id: restaurantId,
         booking_time: {
-          $gte: moment(restaurant[0].open_time),
-          $lte: moment(restaurant[0].close_time),
+          $gte: moment(),
+          $lte: moment().add(2, 'hour').add(30, 'minute'),
         },
       }, function (err, reservations) {
         if (err) {
@@ -57,6 +57,53 @@ app.post('/:restaurant_id/reservations', (req, res) => {
       res.send({
         restaurant_id: restaurantId,
         bookings: reservations,
+      });
+    }
+  });
+});
+
+app.get('/:restaurant_id/reservations/count', (req, res) => {
+  const restaurantId = req.params.restaurant_id;
+
+  Reservation.count({
+    restaurant_id: restaurantId,
+    createdAt: {
+      $gte: moment().startOf('day'),
+      $lte: moment().endOf('day'),
+    },
+  }, function (err, count) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        bookings_count: count,
+      });
+    }
+  });
+});
+
+app.get('/:restaurant_id/reservations/all', (req, res) => {
+  const restaurantId = req.params.restaurant_id;
+
+  Restaurant.find({ _id: restaurantId }, function (err, restaurant) {
+    if (err) {
+      res.send(err);
+    } else {
+      Reservation.find({
+        restaurant_id: restaurantId,
+        booking_time: {
+          $gte: moment().startOf('day'),
+        },
+      }, function (err, reservations) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send({
+            restaurant_id: restaurantId,
+            restaurant_information: restaurant[0],
+            bookings: reservations,
+          });
+        }
       });
     }
   });
