@@ -10,7 +10,7 @@ const timeUtils = {
   },
 
   createListFromBookings(bookings) {
-
+    return [];
   },
 };
 
