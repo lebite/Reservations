@@ -2,6 +2,7 @@ import React from 'react';
 
 import ReservationForm from './ReservationForm.jsx';
 import TimesList from './TimesList.jsx';
+import { Wrapper, GlobalStyles } from '../theme/theme';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,9 +37,12 @@ class App extends React.Component {
     const { bookings } = this.state;
     return (
       <div>
-        <h1>Make a reservation</h1>
-        <ReservationForm restaurant={restaurant} />
-        <TimesList bookings={bookings} />
+        <GlobalStyles />
+        <Wrapper>
+          <h1>Make a reservation</h1>
+          <ReservationForm restaurant={restaurant} />
+          <TimesList bookings={bookings} />
+        </Wrapper>
       </div>
     );
   }
