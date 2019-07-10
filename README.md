@@ -1,12 +1,32 @@
 # Reservation Module
 
-## `GET /`
+## Apearance and Behavior
+
+![](https://docs.google.com/drawings/d/e/2PACX-1vSFMSOOaAvGfGsSGaLSTxMsAdASqoAdO8HagoE0dy5U4DvjTJ988csG0tx2zvE08WnO4WERxO9D2bRd/pub?w=2240&h=1845)
+
+### Bare Minimum Requirements: 
+
+A user should be able to:
+- View availability after current datetime on page load if any exists
+- Select date and time and request availability within 2.5 hours of selected time if any exists
+- Scroll down and see the collapsed reservation component anchored to the sidebar
+
+### Stretch Goals:
+
+A user should be able to
+- Click confirm reservation and have the reservation held for them for five minutes
+
+## API Server Routes
+
+### `GET /bundle.js`
 
 **Input**: none
 
-**Output**: `bundle.js` which can be used by proxy servers
+**Output**: `bundle.js` which can be used by proxy servers to add this module to any page. 
 
-## `GET /:restaurant_id/reservations`
+_Note: In order for module to display your index.html must have a `div` with `id="reservation"`._
+
+### `GET /:restaurant_id/reservations`
 
 **Input**: `restaurant_id` which will be used to look for a particular restaurant’s availability
 
@@ -45,7 +65,7 @@
 }
 ```
 
-## `POST /:restaurant_id/reservations`
+### `POST /:restaurant_id/reservations`
 
 **Inputs**: 
 - `restaurant_id` which will be used to look for a particular restaurant’s availability
@@ -64,17 +84,6 @@
   ]
 }
 ```
-### Bare Minimum Requirements: 
-
-A user should be able to:
-- View availability after current datetime
-- Select date and time and view availability within 2.5 hours of selected time if it exists
-- Scroll down and see the collapsed reservation component anchored to the sidebar
-
-### Stretch Goals:
-
-A user should be able to
-- Click confirm reservation and have the reservation held for them for five minutes
 
 ## MongoDB Data Schema
 MongoDB is the best choice for storing this data because  MongoDB is ideal for situations where you expect high write loads.
@@ -99,6 +108,7 @@ Reservation data is very dynamic. Customers can create new reservations, cancel 
 {
   booking_time: Date,
   party_qty: Number,
+  created_at: Date,
   restaurant_id: Number,
 }
 ```
