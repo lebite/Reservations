@@ -18,15 +18,15 @@ A user should be able to
 
 ## API Server Routes
 
-### `GET /bundle.js`
+#### `GET /bundle.js`
 
 **Input**: none
 
 **Output**: `bundle.js` which can be used by proxy servers to add this module to any page. 
 
-_Note: In order for module to display your index.html must have a `div` with `id="reservation"`._
+_Note: In order for module to display, your index.html must have a `div` with `id="reservation"`._
 
-### `GET /:restaurant_id/reservations`
+#### `GET /:restaurant_id/reservations`
 
 **Input**: `restaurant_id` which will be used to look for a particular restaurant’s availability
 
@@ -50,13 +50,11 @@ _Note: In order for module to display your index.html must have a `div` with `id
   },
   "bookings": [
     {
-      "_id": <string>,
       "booking_time": <datetime>,
       "party_qty": <number>,
       "restaurant_id": <number>
     },
     {
-      "_id": <string>,
       "booking_time": <datetime>,
       "party_qty": <number>,
       "restaurant_id": <number>
@@ -65,7 +63,7 @@ _Note: In order for module to display your index.html must have a `div` with `id
 }
 ```
 
-### `POST /:restaurant_id/reservations`
+#### `POST /:restaurant_id/reservations`
 
 **Inputs**: 
 - `restaurant_id` which will be used to look for a particular restaurant’s availability
@@ -76,12 +74,22 @@ _Note: In order for module to display your index.html must have a `div` with `id
 {
   "bookings": [
     {
-      "_id": <string>,
       "booking_time": <datetime>,
       "party_qty": <number>,
       "restaurant_id": <number>
     }, ...
   ]
+}
+```
+
+#### `GET /:restaurant_id/reservations/count`
+
+**Input**: `restaurant_id` which will be used to look for a particular restaurant’s daily bookings count
+
+**Output**: JSON with the number of times users have created bookings for this restaurant for the current date
+```
+{
+  "bookings_count": <number>
 }
 ```
 
