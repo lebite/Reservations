@@ -30,8 +30,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
 
 **Input**: `restaurant_id` which will be used to look for a particular restaurant’s availability
 
-**Output**: JSON with the number of times the restaurant was booked that day and the timeslots available to book past the current date and time
-
+**Output**: JSON with restaurant information and the reservations that have been made so far that are in the range beginning at the current date/time and ending 2.5 hours after the current date/time
 ```
 {
   "restaurant_id": <number>,
@@ -47,6 +46,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
     "time_intervals": <number>,
     "max_seating": <number>,
     "max_party_size": <number>
+    "max_time_range": <number>
   },
   "bookings": [
     {
@@ -62,6 +62,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
   ]
 }
 ```
+All this data will be used by the client to calculate what to display in the TimeResults area of the module.
 
 #### `POST /:restaurant_id/reservations`
 
@@ -69,7 +70,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
 - `restaurant_id` which will be used to look for a particular restaurant’s availability
 - `datetime` which will be used to refine results for restaurant availability
 
-**Output**: JSON with the times after the selected date/time with that are available to book
+**Output**: JSON with the reservations that have already been made that are in the range beginning at the selected date/time and ending 2.5 hours after the selected date/time
 ```
 {
   "bookings": [
@@ -81,6 +82,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
   ]
 }
 ```
+This data is used by the client to calculate what to display in the TimeResults area of the module as a result of user interaction.
 
 #### `GET /:restaurant_id/reservations/count`
 
@@ -92,6 +94,7 @@ _Note: In order for module to display, your index.html must have a `div` with `i
   "bookings_count": <number>
 }
 ```
+This result is used by the client to provide reservation stats.
 
 ## MongoDB Data Schema
 MongoDB is the best choice for storing this data because  MongoDB is ideal for situations where you expect high write loads.
@@ -117,7 +120,8 @@ Reservation data is very dynamic. Customers can create new reservations, cancel 
 {
   booking_time: Date,
   party_qty: Number,
-  created_at: Date,
   restaurant_id: Number,
+  createdAt: Date,
+  updatedAt: Date,
 }
 ```

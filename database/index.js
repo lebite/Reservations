@@ -22,9 +22,7 @@ const reservationSchema = mongoose.Schema({
   booking_time: Date,
   party_qty: Number,
   restaurant_id: Number,
-}, {
-  timestamps: true,
-});
+}, { timestamps: true });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);
 
