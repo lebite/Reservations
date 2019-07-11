@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component renders all three sections 1`] = `
+exports[`App component renders title, form, and times sections 1`] = `
 <div>
   <section
     className="theme__Wrapper-qp42uy-0 igZQuB"
