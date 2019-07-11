@@ -50,8 +50,8 @@ function seedReservations() {
   const maxPartySize = 10;
 
   // create 100 restaurants and 2 to 10 reservations per restaurant
-  let restaurants = [];
-  let reservations = [];
+  const restaurants = [];
+  const reservations = [];
 
   for (let i = 0; i < 100; i += 1) {
     const newRestaurant = {
@@ -61,6 +61,7 @@ function seedReservations() {
       max_party_size: getRandomInt(minPartySize, maxPartySize + 1), // +1 because of getRandomInt
       open_time: openTimes[getRandomInt(0, openTimes.length)],
       close_time: closeTimes[getRandomInt(0, closeTimes.length)],
+      max_time_range: getRandomInt(7, 365),
     };
     restaurants.push(newRestaurant);
 
