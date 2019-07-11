@@ -1,39 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
-import timeUtils from '../utils/timeUtils';
+import TimeSlot from './TimeSlot.jsx';
 
-class TimesList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bookings: props.bookings,
-      timesList: [],
-    };
-  }
-
-  componentDidMount() {
-    const { bookings } = this.state;
-    this.setState({
-      timesList: timeUtils.createListFromBookings(bookings),
-    });
-  }
-
-  render() {
-    const { timesList } = this.state;
-    return (
-      <div>
-        {JSON.stringify(timesList)}
-      </div>
-    );
-  }
-}
+const TimesList = ({ available }) => (
+  <div>
+    {available.map(time => (<TimeSlot time={time} />))}
+  </div>
+);
 
 TimesList.propTypes = {
-  bookings: PropTypes.arrayOf(PropTypes.shape({
-    booking_time: PropTypes.any,
-    party_qty: PropTypes.number,
-  })).isRequired,
+  available: PropTypes.arrayOf(PropTypes.instanceOf(moment)).isRequired,
 };
 
 export default TimesList;
