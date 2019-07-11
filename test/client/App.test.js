@@ -37,8 +37,8 @@ describe('App component', () => {
     };
     axios.get
       .mockResolvedValue(reservationsResponse)
-      .mockResolvedValueOnce((path, cb) => cb(reservationsResponse))
-      .mockResolvedValueOnce((path, cb) => cb(countResponse));
+      .mockResolvedValueOnce(reservationsResponse)
+      .mockResolvedValueOnce(countResponse);
 
     const component = renderer.create(<App />);
     const json = component.toJSON();
