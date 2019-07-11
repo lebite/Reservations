@@ -24,7 +24,7 @@ describe('Server should respond to', () => {
     Restaurant.find.mockImplementation((q, cb) => cb(null, [restaurant]));
     Reservation.find.mockImplementation((q, cb) => cb(null, reservations));
 
-    return request(server).get('/1/reservations').expect(200, done);
+    request(server).get('/1/reservations').expect(200, done);
   });
 
   test('GET /:restaurant_id/reservations with restaurant info and upcoming bookings', (done) => {
@@ -33,7 +33,7 @@ describe('Server should respond to', () => {
     Restaurant.find.mockImplementation((q, cb) => cb(null, [restaurant]));
     Reservation.find.mockImplementation((q, cb) => cb(null, reservations));
 
-    return request(server).get('/1/reservations').expect(200, {
+    request(server).get('/1/reservations').expect(200, {
       restaurant_id: '1',
       restaurant_information: restaurant,
       bookings: reservations,
