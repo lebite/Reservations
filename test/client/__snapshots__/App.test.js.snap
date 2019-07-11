@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component renders all three sections 1`] = `
+exports[`App component renders title, form, times, and stats sections 1`] = `
 <div>
   <section
     className="theme__Wrapper-qp42uy-0 igZQuB"
@@ -9,11 +9,14 @@ exports[`App component renders all three sections 1`] = `
       Make a reservation
     </h1>
     <div>
-      {"open_time":{"hour":0,"minute":0},"close_time":{"hour":0,"minute":0},"time_intervals":0,"max_seating":0,"max_party_size":0}
+      {"openTime":{"hour":0,"minute":0},"closeTime":{"hour":0,"minute":0},"timeIntervals":0,"maxSeating":0,"maxPartySize":0}
     </div>
     <div>
-      [{"booking_time":null,"party_qty":0}]
+      [{"bookingTime":null,"partyQty":0}]
     </div>
+    <span>
+      Booked 0 times today
+    </span>
   </section>
 </div>
 `;

@@ -5,9 +5,3 @@ exports[`TimesList component renders with no errors when valid bookings array pa
   [{"booking_time":null,"party_qty":0}]
 </div>
 `;
-
-exports[`TimesList component renders with no errors with valid bookings array 1`] = `
-<div>
-  [{"booking_time":null,"party_qty":0}]
-</div>
-`;
