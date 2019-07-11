@@ -9,31 +9,33 @@ jest.mock('axios');
 describe('App component', () => {
   it('renders title, form, times, and stats sections', () => {
     const reservationsResponse = {
-      restaurant_id: 1,
-      restaurant_information: {
-        restaurant_open_time: {
-          hour: 8,
-          minute: 0,
+      data: {
+        restaurant_id: 1,
+        restaurant_information: {
+          restaurant_open_time: {
+            hour: 8,
+            minute: 0,
+          },
+          restaurant_close_time: {
+            hour: 6,
+            minute: 30,
+          },
+          time_intervals: 30,
+          max_seating: 10,
+          max_party_size: 5,
+          max_time_range: 7,
         },
-        restaurant_close_time: {
-          hour: 6,
-          minute: 30,
-        },
-        time_intervals: 30,
-        max_seating: 10,
-        max_party_size: 5,
-        max_time_range: 7,
+        bookings: [
+          {
+            booking_time: new Date(),
+            party_qty: 2,
+            restaurant_id: 1,
+          },
+        ],
       },
-      bookings: [
-        {
-          booking_time: new Date(),
-          party_qty: 2,
-          restaurant_id: 1,
-        },
-      ],
     };
     const countResponse = {
-      bookings_count: 1,
+      data: { bookings_count: 1 },
     };
     axios.get
       .mockResolvedValue(reservationsResponse)
