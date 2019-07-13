@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import moment from 'moment';
+import { Button } from '../theme/theme';
 
 const TimesSlot = ({ time }) => (
-  <div>
+  <Button>
     {time.format('LT')}
-  </div>
+  </Button>
 );
 
 TimesSlot.propTypes = {

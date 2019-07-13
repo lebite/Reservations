@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       restaurantId: Math.floor(Math.random() * 100),
       restaurant: {
+        id: -1,
         openTime: {
           hour: 0,
           minute: 0,
@@ -39,6 +40,7 @@ class App extends React.Component {
         let { bookings } = response.data;
 
         const restaurant = {
+          id: restaurant_information._id,
           openTime: restaurant_information.open_time,
           closeTime: restaurant_information.close_time,
           timeIntervals: restaurant_information.time_intervals,
