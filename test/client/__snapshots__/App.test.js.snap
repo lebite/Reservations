@@ -40,6 +40,7 @@ exports[`App component renders title, form, times, and stats sections 1`] = `
             </label>
             <input
               className="form__CalendarInput-sc-1u23csf-3 joKqVc"
+              defaultValue="07-15-2019"
               id="date"
               name="date"
               type="date"
@@ -48,16 +49,33 @@ exports[`App component renders title, form, times, and stats sections 1`] = `
           <div>
             <label
               className="form__Label-sc-1u23csf-0 jPepbi"
-              htmlFor="month"
+              htmlFor="time"
             >
               Time
             </label>
-            <input
-              className="form__TimeInput-sc-1u23csf-4 fyDaad"
+            <select
+              className="form__Select-sc-1u23csf-2 fEMCHC"
               id="time"
-              name="time"
-              type="time"
-            />
+            >
+              <option>
+                12:00 AM
+              </option>
+              <option>
+                12:00 AM
+              </option>
+              <option>
+                12:00 AM
+              </option>
+              <option>
+                12:00 AM
+              </option>
+              <option>
+                12:00 AM
+              </option>
+              <option>
+                12:00 AM
+              </option>
+            </select>
           </div>
         </section>
         <br />
