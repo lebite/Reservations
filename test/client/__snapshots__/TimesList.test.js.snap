@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TimesList component renders with no errors when valid bookings array passed in 1`] = `
+exports[`ListTimes component renders with no errors when valid bookings array passed in 1`] = `
 <div>
-  [{"booking_time":null,"party_qty":0}]
+  <h3>
+    Select a time:
+  </h3>
+  <button
+    className="buttons__TimeButton-kxhf3y-0 epeOJw"
+  >
+    12:00 PM
+  </button>
+  <button
+    className="buttons__TimeButton-kxhf3y-0 epeOJw"
+  >
+    12:30 PM
+  </button>
 </div>
 `;

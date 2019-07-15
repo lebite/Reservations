@@ -1,7 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReservationForm component renders with no errors when valid restaurant passed in 1`] = `
-<div>
-  {"open_time":{"hour":0,"minute":0},"close_time":{"hour":0,"minute":0},"time_intervals":0,"max_seating":0,"max_party_size":0}
-</div>
+<form
+  action="/undefined/reservations"
+  className="form__Form-sc-1u23csf-1 cjIAkB"
+  method="post"
+>
+  <div>
+    <label
+      className="form__Label-sc-1u23csf-0 jPepbi"
+      htmlFor="party"
+    >
+      Party Size
+    </label>
+    <select
+      className="form__Select-sc-1u23csf-2 fEMCHC"
+      id="party"
+    />
+  </div>
+  <section
+    className="global__RowWrapper-vsm6zv-2 jTnlro"
+  >
+    <div>
+      <label
+        className="form__Label-sc-1u23csf-0 jPepbi"
+        htmlFor="month"
+      >
+        Date
+      </label>
+      <input
+        className="form__CalendarInput-sc-1u23csf-3 joKqVc"
+        id="date"
+        name="date"
+        type="date"
+      />
+    </div>
+    <div>
+      <label
+        className="form__Label-sc-1u23csf-0 jPepbi"
+        htmlFor="month"
+      >
+        Time
+      </label>
+      <input
+        className="form__TimeInput-sc-1u23csf-4 fyDaad"
+        id="time"
+        name="time"
+        type="time"
+      />
+    </div>
+  </section>
+</form>
 `;

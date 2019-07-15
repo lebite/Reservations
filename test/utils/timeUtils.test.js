@@ -23,4 +23,27 @@ describe('timeUtils', () => {
     expect(timeUtils.getAvailableFromBookings(restaurant, bookings, testTime)).toHaveLength(6);
     done();
   });
+
+  test('getAvailableFromBookings returns zero timeslots when time is past closing', (done) => {
+    const restaurant = {
+      maxSeating: 10,
+      timeIntervals: 30,
+      openTime: {
+        hour: 10,
+        minute: 0,
+      },
+      closeTime: {
+        hour: 17,
+        minute: 0,
+      },
+    };
+    const bookings = [];
+    const testTime = {
+      hour: 18,
+      minute: 30,
+    };
+
+    expect(timeUtils.getAvailableFromBookings(restaurant, bookings, testTime)).toHaveLength(0);
+    done();
+  });
 });

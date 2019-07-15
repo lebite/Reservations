@@ -3,8 +3,13 @@ import moment from 'moment';
 const MAX_SLOTS = 6;
 
 const timeUtils = {
-  getAdjustedTime(time, date) {
-
+  combine(time, date) {
+    Object.keys(date).forEach((key) => {
+      if (key !== 'hour' && key !== 'minute') {
+        time[key] = date[key];
+      }
+    });
+    return time;
   },
 
   createTimeslots(restaurant, date = {}) {
@@ -13,6 +18,8 @@ const timeUtils = {
       openTime,
       closeTime,
     } = restaurant;
+    this.combine(openTime, date);
+    this.combine(closeTime, date);
 
     const begin = moment(date).startOf('minute').startOf('second');
 

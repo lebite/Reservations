@@ -1,9 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+import { AppWrapper, ContentWrapper, GlobalStyles } from '../theme/global';
+
 import ReservationForm from './ReservationForm.jsx';
-import TimesList from './TimesList.jsx';
-import { Wrapper, GlobalStyles } from '../theme/theme';
+import ListTimes from './actions/ListTimes.jsx';
+import ShowButton from './actions/ShowButton.jsx';
+import InfoBox from './InfoBox.jsx';
 
 import timeUtils from '../utils/timeUtils';
 
@@ -76,12 +79,14 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyles />
-        <Wrapper>
-          <h1>Make a reservation</h1>
-          <ReservationForm restaurant={restaurant} />
-          <TimesList available={available} />
-          <span>{`Booked ${bookingsToday} times today`}</span>
-        </Wrapper>
+        <AppWrapper>
+          <ContentWrapper>
+            <h1>Make a reservation</h1>
+            <ReservationForm restaurant={restaurant} />
+            {(available.length > 0) ? <ListTimes available={available} /> : <ShowButton />}
+            <InfoBox bookingsToday={bookingsToday} availableCount={available.length} />
+          </ContentWrapper>
+        </AppWrapper>
       </div>
     );
   }
