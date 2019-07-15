@@ -6,7 +6,7 @@ import { Label, Select } from '../../theme/form';
 function createPartySizeDropdown(maxSize) {
   const options = [];
   for (let i = 1; i <= maxSize; i += 1) {
-    options.push((<option key={i}>{i}</option>));
+    options.push((<option key={`party_${i}`}>{i}</option>));
   }
   return options;
 }

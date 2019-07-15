@@ -19,9 +19,7 @@ const GlobalStyles = createGlobalStyle`
     }
     font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   }
-  h1 {
-    text-align: center;
-  }
+
   #reservation {
     width: 320px;
   }
@@ -75,6 +73,10 @@ const SectionTitle = styled.span`
   line-height: 24px;
 `;
 
+const ModuleTitle = styled.h1`
+  text-align: center;
+`;
+
 export {
   GlobalStyles,
   AppWrapper,
@@ -82,4 +84,5 @@ export {
   RowWrapper,
   TextWrapper,
   SectionTitle,
+  ModuleTitle,
 };
