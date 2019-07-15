@@ -1,9 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
+import { AppWrapper, ContentWrapper, GlobalStyles } from '../theme/global';
+
 import ReservationForm from './ReservationForm.jsx';
-import TimesList from './TimesList.jsx';
-import { Wrapper, GlobalStyles } from '../theme/theme';
+import ListTimes from './actions/ListTimes.jsx';
+import ShowButton from './actions/ShowButton.jsx';
+import InfoBox from './InfoBox.jsx';
+
+import timeUtils from '../utils/timeUtils';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +16,7 @@ class App extends React.Component {
     this.state = {
       restaurantId: Math.floor(Math.random() * 100),
       restaurant: {
+        id: -1,
         openTime: {
           hour: 0,
           minute: 0,
@@ -23,11 +29,8 @@ class App extends React.Component {
         maxSeating: 0,
         maxPartySize: 0,
       },
-      bookings: [{
-        bookingTime: null,
-        partyQty: 0,
-      }],
       bookingsToday: 0,
+      available: [],
     };
   }
 
@@ -36,21 +39,27 @@ class App extends React.Component {
 
     axios.get(`/${restaurantId}/reservations`)
       .then((response) => {
-        const { restaurant_information, bookings } = response.data;
+        const { restaurant_information } = response.data;
+        let { bookings } = response.data;
+
+        const restaurant = {
+          id: restaurant_information._id,
+          openTime: restaurant_information.open_time,
+          closeTime: restaurant_information.close_time,
+          timeIntervals: restaurant_information.time_intervals,
+          maxSeating: restaurant_information.max_seating,
+          maxPartySize: restaurant_information.max_party_size,
+          maxTimeRange: restaurant_information.max_time_range,
+        };
+
+        bookings = bookings.map(booking => ({
+          bookingTime: booking.booking_time,
+          partyQty: booking.party_qty,
+        }));
 
         this.setState({
-          restaurant: {
-            openTime: restaurant_information.open_time,
-            closeTime: restaurant_information.close_time,
-            timeIntervals: restaurant_information.time_intervals,
-            maxSeating: restaurant_information.max_seating,
-            maxPartySize: restaurant_information.max_party_size,
-            maxTimeRange: restaurant_information.max_time_range,
-          },
-          bookings: bookings.map(booking => ({
-            bookingTime: booking.booking_time,
-            partyQty: booking.party_qty,
-          })),
+          restaurant,
+          available: timeUtils.getAvailableFromBookings(restaurant, bookings),
         });
       })
       .catch((err) => {
@@ -66,16 +75,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { restaurant, bookings, bookingsToday } = this.state;
+    const { restaurant, available, bookingsToday } = this.state;
     return (
       <div>
         <GlobalStyles />
-        <Wrapper>
-          <h1>Make a reservation</h1>
-          <ReservationForm restaurant={restaurant} />
-          <TimesList bookings={bookings} />
-          <span>{`Booked ${bookingsToday} times today`}</span>
-        </Wrapper>
+        <AppWrapper>
+          <ContentWrapper>
+            <h1>Make a reservation</h1>
+            <ReservationForm restaurant={restaurant} />
+            {(available.length > 0) ? <ListTimes available={available} /> : <ShowButton />}
+            <InfoBox bookingsToday={bookingsToday} availableCount={available.length} />
+          </ContentWrapper>
+        </AppWrapper>
       </div>
     );
   }

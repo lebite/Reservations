@@ -3,20 +3,76 @@
 exports[`App component renders title, form, times, and stats sections 1`] = `
 <div>
   <section
-    className="theme__Wrapper-qp42uy-0 igZQuB"
+    className="global__AppWrapper-vsm6zv-0 kKFCfu"
   >
-    <h1>
-      Make a reservation
-    </h1>
-    <div>
-      {"openTime":{"hour":0,"minute":0},"closeTime":{"hour":0,"minute":0},"timeIntervals":0,"maxSeating":0,"maxPartySize":0}
+    <div
+      className="global__ContentWrapper-vsm6zv-1 dZPduL"
+    >
+      <h1>
+        Make a reservation
+      </h1>
+      <form
+        action="/-1/reservations"
+        className="form__Form-sc-1u23csf-1 cjIAkB"
+        method="post"
+      >
+        <div>
+          <label
+            className="form__Label-sc-1u23csf-0 jPepbi"
+            htmlFor="party"
+          >
+            Party Size
+          </label>
+          <select
+            className="form__Select-sc-1u23csf-2 fEMCHC"
+            id="party"
+          />
+        </div>
+        <section
+          className="global__RowWrapper-vsm6zv-2 jTnlro"
+        >
+          <div>
+            <label
+              className="form__Label-sc-1u23csf-0 jPepbi"
+              htmlFor="month"
+            >
+              Date
+            </label>
+            <input
+              className="form__CalendarInput-sc-1u23csf-3 joKqVc"
+              id="date"
+              name="date"
+              type="date"
+            />
+          </div>
+          <div>
+            <label
+              className="form__Label-sc-1u23csf-0 jPepbi"
+              htmlFor="month"
+            >
+              Time
+            </label>
+            <input
+              className="form__TimeInput-sc-1u23csf-4 fyDaad"
+              id="time"
+              name="time"
+              type="time"
+            />
+          </div>
+        </section>
+        <br />
+      </form>
+      <div>
+        <button
+          className="buttons__Button-kxhf3y-1 hcmyGk"
+        >
+          Find a Table
+        </button>
+      </div>
+      <div>
+        <br />
+      </div>
     </div>
-    <div>
-      [{"bookingTime":null,"partyQty":0}]
-    </div>
-    <span>
-      Booked 0 times today
-    </span>
   </section>
 </div>
 `;

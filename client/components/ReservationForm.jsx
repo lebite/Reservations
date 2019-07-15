@@ -1,25 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { RowWrapper } from '../theme/global';
+import { Form } from '../theme/form';
+
+import SizePicker from './pickers/SizePicker.jsx';
+import DatePicker from './pickers/DatePicker.jsx';
+import TimePicker from './pickers/TimePicker.jsx';
+
 const ReservationForm = ({ restaurant }) => (
-  <div>
-    {JSON.stringify(restaurant)}
-  </div>
+  <Form action={`/${restaurant.id}/reservations`} method="post">
+    <SizePicker maxSize={restaurant.maxPartySize} />
+    <RowWrapper>
+      <DatePicker />
+      <TimePicker
+        openTime={restaurant.openTime}
+        closeTime={restaurant.closeTime}
+        timeIntervals={restaurant.timeIntervals}
+      />
+    </RowWrapper>
+    <br />
+  </Form>
 );
 
 ReservationForm.propTypes = {
   restaurant: PropTypes.shape({
-    open_time: PropTypes.shape({
+    id: PropTypes.number,
+    openTime: PropTypes.shape({
       hour: PropTypes.number,
       minute: PropTypes.number,
     }),
-    close_time: PropTypes.shape({
+    closeTime: PropTypes.shape({
       hour: PropTypes.number,
       minute: PropTypes.number,
     }),
-    time_intervals: PropTypes.number,
-    max_seating: PropTypes.number,
-    max_party_size: PropTypes.number,
+    timeIntervals: PropTypes.number,
+    maxSeating: PropTypes.number,
+    maxPartySize: PropTypes.number,
   }).isRequired,
 };
 
