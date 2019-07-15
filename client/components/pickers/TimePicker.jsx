@@ -14,7 +14,7 @@ const TimePicker = ({ openTime, closeTime, timeIntervals }) => (
           closeTime,
           timeIntervals,
         }, openTime).map(slot => (
-          <option key={slot.toISOString()}>
+          <option key={`timeslot_${slot.toISOString()}`}>
             {slot.format('LT')}
           </option>
         ))

@@ -1,7 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
-import { AppWrapper, ContentWrapper, GlobalStyles } from '../theme/global';
+import {
+  AppWrapper,
+  ContentWrapper,
+  GlobalStyles,
+  ModuleTitle,
+} from '../theme/global';
 
 import ReservationForm from './ReservationForm.jsx';
 import ListTimes from './actions/ListTimes.jsx';
@@ -37,7 +42,7 @@ class App extends React.Component {
   componentDidMount() {
     const { restaurantId } = this.state;
 
-    axios.get(`/${restaurantId}/reservations`)
+    axios.get(`http://localhost:3002/${restaurantId}/reservations`)
       .then((response) => {
         const { restaurant_information } = response.data;
         let { bookings } = response.data;
@@ -66,7 +71,7 @@ class App extends React.Component {
         console.log(err);
       });
 
-    axios.get(`/${restaurantId}/reservations/count`)
+    axios.get(`http://localhost:3002/${restaurantId}/reservations/count`)
       .then((response) => {
         this.setState({
           bookingsToday: response.data.bookings_count,
@@ -81,7 +86,11 @@ class App extends React.Component {
         <GlobalStyles />
         <AppWrapper>
           <ContentWrapper>
-            <h1>Make a reservation</h1>
+            <div>
+              <ModuleTitle>
+                <span>Make a reservation</span>
+              </ModuleTitle>
+            </div>
             <ReservationForm restaurant={restaurant} />
             {(available.length > 0) ? <ListTimes available={available} /> : <ShowButton />}
             <InfoBox bookingsToday={bookingsToday} availableCount={available.length} />
