@@ -43,7 +43,7 @@ class App extends React.Component {
   componentDidMount() {
     const { restaurantId } = this.state;
 
-    axios.get(`http://localhost:3002/${restaurantId}/reservations`)
+    axios.get(`/${restaurantId}/reservations`)
       .then((response) => {
         const { restaurant_information } = response.data;
         let { bookings } = response.data;
@@ -72,7 +72,7 @@ class App extends React.Component {
         console.log(err);
       });
 
-    axios.get(`http://localhost:3002/${restaurantId}/reservations/count`)
+    axios.get(`/${restaurantId}/reservations/count`)
       .then((response) => {
         this.setState({
           bookingsToday: response.data.bookings_count,
