@@ -18,10 +18,11 @@ import timeUtils from '../utils/timeUtils';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const randId = Math.floor(Math.random() * 100);
     this.state = {
-      restaurantId: Math.floor(Math.random() * 100),
+      restaurantId: randId,
       restaurant: {
-        id: -1,
+        id: randId,
         openTime: {
           hour: 0,
           minute: 0,
