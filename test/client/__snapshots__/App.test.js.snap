@@ -60,6 +60,7 @@ exports[`App component renders title, form, times, and stats sections 1`] = `
             />
           </div>
         </section>
+        <br />
       </form>
       <div>
         <button
@@ -68,7 +69,9 @@ exports[`App component renders title, form, times, and stats sections 1`] = `
           Find a Table
         </button>
       </div>
-      <div />
+      <div>
+        <br />
+      </div>
     </div>
   </section>
 </div>

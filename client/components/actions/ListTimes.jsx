@@ -4,9 +4,13 @@ import moment from 'moment';
 
 import TimeSlot from '../pickers/TimeSlot.jsx';
 
+import { SectionTitle } from '../../theme/global';
+
 const ListTimes = ({ available }) => (
   <div>
-    <h3>Select a time:</h3>
+    <div>
+      <SectionTitle>Select a time:</SectionTitle>
+    </div>
     {available.map(time => (<TimeSlot key={time.toISOString()} time={time} />))}
   </div>
 );

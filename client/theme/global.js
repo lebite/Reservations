@@ -22,6 +22,9 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     text-align: center;
   }
+  #reservation {
+    width: 320px;
+  }
 `;
 
 const AppWrapper = styled.section`
@@ -65,10 +68,18 @@ const TextWrapper = styled.div`
   margin: 0 0 0 .25rem;
 `;
 
+const SectionTitle = styled.span`
+  margin: 0 0 .5rem;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+`;
+
 export {
   GlobalStyles,
   AppWrapper,
   ContentWrapper,
   RowWrapper,
   TextWrapper,
+  SectionTitle,
 };

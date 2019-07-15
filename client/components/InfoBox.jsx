@@ -5,6 +5,7 @@ import { TextWrapper } from '../theme/global';
 
 const InfoBox = ({ bookingsToday, availableCount }) => (
   <div>
+    <br />
     {
       (bookingsToday > 0) ? (
         <div>

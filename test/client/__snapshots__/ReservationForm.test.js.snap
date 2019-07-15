@@ -50,5 +50,6 @@ exports[`ReservationForm component renders with no errors when valid restaurant 
       />
     </div>
   </section>
+  <br />
 </form>
 `;

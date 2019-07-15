@@ -15,6 +15,7 @@ const ReservationForm = ({ restaurant }) => (
       <DatePicker />
       <TimePicker />
     </RowWrapper>
+    <br />
   </Form>
 );
 
