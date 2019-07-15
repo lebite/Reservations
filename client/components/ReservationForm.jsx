@@ -1,34 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Form, Select, CalendarInput, TimeInput } from '../theme/theme';
+import { RowWrapper } from '../theme/global';
+import { Form } from '../theme/form';
 
-class ReservationForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+import SizePicker from './pickers/SizePicker.jsx';
+import DatePicker from './pickers/DatePicker.jsx';
+import TimePicker from './pickers/TimePicker.jsx';
 
-  createPartySizeDropdown(max) {
-    var options = [];
-    for (let i = 1; i <= max; i+= 1) {
-      options.push((<option>{i}</option>));
-    }
-    return options;
-  }
-
-  render() {
-    const { id, maxPartySize } = this.props.restaurant;
-    return (
-      <Form action={`/${id}/reservations`} method="post">
-        <Select>
-          {this.createPartySizeDropdown(maxPartySize)}
-        </Select>
-        <CalendarInput type="month" name="month" id="month" />
-        <TimeInput type="time" name="time" id="time" />
-      </Form>
-    );
-  }
-}
+const ReservationForm = ({ restaurant }) => (
+  <Form action={`/${restaurant.id}/reservations`} method="post">
+    <SizePicker maxSize={restaurant.maxPartySize} />
+    <RowWrapper>
+      <DatePicker />
+      <TimePicker />
+    </RowWrapper>
+  </Form>
+);
 
 ReservationForm.propTypes = {
   restaurant: PropTypes.shape({

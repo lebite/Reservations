@@ -5,17 +5,17 @@ import ReservationForm from '../../client/components/ReservationForm';
 
 describe('ReservationForm component', () => {
   const sampleRestaurant = {
-    open_time: {
+    openTime: {
       hour: 0,
       minute: 0,
     },
-    close_time: {
+    closeTime: {
       hour: 0,
       minute: 0,
     },
-    time_intervals: 0,
-    max_seating: 0,
-    max_party_size: 0,
+    timeIntervals: 0,
+    maxSeating: 0,
+    maxPartySize: 0,
   };
 
   it('renders with no errors when valid restaurant passed in', () => {

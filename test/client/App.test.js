@@ -44,7 +44,7 @@ describe('App component', () => {
 
     const component = renderer.create(<App />);
     const json = component.toJSON();
-    expect(json.children[0].children).toHaveLength(4);
+    expect(json.children[0].children[0].children).toHaveLength(4);
     expect(json).toMatchSnapshot();
   });
 });
