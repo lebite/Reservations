@@ -41,7 +41,7 @@ const InfoBox = ({ bookingsToday, availableCount }) => (
             <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" style={{ background: 'rgb(255, 255, 255) none repeat scroll 0% 0%' }}>
               <title>icon/ic_scarcity</title>
               <desc>Created with Sketch.</desc>
-              <defs></defs>
+              <defs />
               <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="icon/ic_scarcity">
                   <g id="ic_scarcity">

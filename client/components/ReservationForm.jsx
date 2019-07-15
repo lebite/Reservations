@@ -13,7 +13,11 @@ const ReservationForm = ({ restaurant }) => (
     <SizePicker maxSize={restaurant.maxPartySize} />
     <RowWrapper>
       <DatePicker />
-      <TimePicker />
+      <TimePicker
+        openTime={restaurant.openTime}
+        closeTime={restaurant.closeTime}
+        timeIntervals={restaurant.timeIntervals}
+      />
     </RowWrapper>
     <br />
   </Form>

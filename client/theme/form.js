@@ -60,36 +60,9 @@ const CalendarInput = styled.input`
   }
 `;
 
-const TimeInput = styled.input`
-  cursor: pointer;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 50%;
-  flex: 1 50%;
-  width: 130px;
-  position: absolute;
-  -webkit-box-align: center;
-  margin-left: .5rem;
-  background-color: #fff;
-  box-sizing: border-box;
-  display: flex;
-  height: 35px;
-  padding-top: 2px;
-  border: 0;
-  border-bottom: 1px solid #d8d9db;
-
-  &:hover, &:focus {
-    border-bottom: 2px solid #da3743;
-  }
-
-  &:-webkit-placeholder {
-    font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  }
-`;
-
 export {
   Label,
   Form,
   Select,
   CalendarInput,
-  TimeInput,
 };
