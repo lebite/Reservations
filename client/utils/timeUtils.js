@@ -42,6 +42,27 @@ const timeUtils = {
     return timeSlots;
   },
 
+  createFullTimesList(restaurant) {
+    const {
+      timeIntervals,
+      openTime,
+      closeTime,
+    } = restaurant;
+
+    const timeSlots = [];
+
+    const begin = moment(openTime).startOf('minute').startOf('second');
+    let timeslot = begin.clone();
+
+    while (timeslot < moment(closeTime)) {
+      timeSlots.push(timeslot);
+      timeslot.add(timeIntervals, 'minute');
+
+      timeslot = timeslot.clone();
+    }
+    return timeSlots;
+  },
+
   getAvailableFromBookings(restaurant, bookings, date = {}) {
     let timeSlots = this.createTimeslots(restaurant, date);
 

@@ -1,7 +1,7 @@
 
 import styled, { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   body {
     @font-face {
       font-family: BrandonText;
@@ -21,13 +21,13 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const ModuleWrapper = styled.aside`
+export const ModuleWrapper = styled.aside`
   width: 320px;
   margin: 0 0 0 1rem;
   display: flex;
 `;
 
-const AppWrapper = styled.section`
+export const AppWrapper = styled.section`
   width: 320px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -36,7 +36,7 @@ const AppWrapper = styled.section`
   box-shadow: 0 2px 8px rgba(153, 153, 153, .4);
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   padding: .5rem 1rem 1rem;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
@@ -44,7 +44,7 @@ const ContentWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const RowWrapper = styled.section`
+export const RowWrapper = styled.section`
   width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -57,7 +57,7 @@ const RowWrapper = styled.section`
   flex: 1 100%;
 `;
 
-const TextWrapper = styled.div`
+export const TextWrapper = styled.div`
   display: flex;
   font-size: 14px;
   font-weight: 500;
@@ -68,24 +68,16 @@ const TextWrapper = styled.div`
   margin: 0 0 0 .25rem;
 `;
 
-const SectionTitle = styled.span`
+export const SectionTitle = styled.span`
   margin: 0 0 .5rem;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
 `;
 
-const ModuleTitle = styled.h1`
+export const ModuleTitle = styled.h1`
   text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  line-height: 24px;
 `;
-
-export {
-  GlobalStyles,
-  ModuleWrapper,
-  AppWrapper,
-  ContentWrapper,
-  RowWrapper,
-  TextWrapper,
-  SectionTitle,
-  ModuleTitle,
-};

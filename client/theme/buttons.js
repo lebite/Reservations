@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TimeButton = styled.button`
+export const TimeButton = styled.button`
   cursor: pointer;
   background: #da3743;
   color: white;
@@ -18,7 +18,7 @@ const TimeButton = styled.button`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   cursor: pointer;
   padding: .75rem 1rem;
   text-decoration: none;
@@ -34,8 +34,3 @@ const Button = styled.button`
     border: 2px solid #eea0a5;
   }
 `;
-
-export {
-  TimeButton,
-  Button,
-};

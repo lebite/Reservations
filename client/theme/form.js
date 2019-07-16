@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const Label = styled.label`
+export const Label = styled.label`
   font-size: .875rem;
   font-weight: 500;
   padding-bottom: .25rem;
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
   padding-top: .75rem;
   margin: .5em;
   display: block;
@@ -14,7 +14,7 @@ const Form = styled.form`
   border-top: 1px solid #d8d9db;
 `;
 
-const Select = styled.select`
+export const Select = styled.select`
   cursor: pointer;
   font-family: inherit;
   background-color: #fff;
@@ -38,7 +38,12 @@ const Select = styled.select`
   }
 `;
 
-const CalendarInput = styled.input`
+export const TimeSelect = styled(Select)`
+  width: 130px;
+  margin-left: .75em;
+`;
+
+export const CalendarInput = styled.input`
   cursor: pointer;
   -webkit-box-flex: 1;
   -ms-flex: 1 50%;
@@ -59,10 +64,3 @@ const CalendarInput = styled.input`
     border-bottom: 2px solid #da3743;
   }
 `;
-
-export {
-  Label,
-  Form,
-  Select,
-  CalendarInput,
-};
