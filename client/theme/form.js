@@ -22,10 +22,7 @@ export const Select = styled.select`
   display: block;
   outline: none;
   border: none;
-      border-bottom-color: #d8d9db;
-      border-bottom-style: none;
-      border-bottom-width: medium;
-  width: 100%;
+      width: 100%;
   height: 35px;
   -webkit-appearance: none;
   -moz-appearance: none;
