@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import {
+  ModuleWrapper,
   AppWrapper,
   ContentWrapper,
   GlobalStyles,
@@ -83,21 +84,23 @@ class App extends React.Component {
   render() {
     const { restaurant, available, bookingsToday } = this.state;
     return (
-      <div>
-        <GlobalStyles />
-        <AppWrapper>
-          <ContentWrapper>
-            <div>
-              <ModuleTitle>
-                <span>Make a reservation</span>
-              </ModuleTitle>
-            </div>
-            <ReservationForm restaurant={restaurant} />
-            {(available.length > 0) ? <ListTimes available={available} /> : <ShowButton />}
-            <InfoBox bookingsToday={bookingsToday} availableCount={available.length} />
-          </ContentWrapper>
-        </AppWrapper>
-      </div>
+      <ModuleWrapper>
+        <div>
+          <GlobalStyles />
+          <AppWrapper>
+            <ContentWrapper>
+              <div>
+                <ModuleTitle>
+                  Make a reservation
+                </ModuleTitle>
+              </div>
+              <ReservationForm restaurant={restaurant} />
+              {(available.length > 0) ? <ListTimes available={available} /> : <ShowButton />}
+              <InfoBox bookingsToday={bookingsToday} availableCount={available.length} />
+            </ContentWrapper>
+          </AppWrapper>
+        </div>
+      </ModuleWrapper>
     );
   }
 }

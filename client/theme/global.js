@@ -19,10 +19,12 @@ const GlobalStyles = createGlobalStyle`
     }
     font-family: BrandonText,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   }
+`;
 
-  #reservation {
-    width: 320px;
-  }
+const ModuleWrapper = styled.aside`
+  width: 320px;
+  margin: 0 0 0 1rem;
+  display: flex;
 `;
 
 const AppWrapper = styled.section`
@@ -79,6 +81,7 @@ const ModuleTitle = styled.h1`
 
 export {
   GlobalStyles,
+  ModuleWrapper,
   AppWrapper,
   ContentWrapper,
   RowWrapper,
