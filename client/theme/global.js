@@ -24,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
 export const ModuleWrapper = styled.aside`
   width: 320px;
   margin: 0 0 0 1rem;
+  margin-top: 420px;
   display: flex;
 `;
 
@@ -80,4 +81,5 @@ export const ModuleTitle = styled.h1`
   margin-top: 8px;
   margin-bottom: 8px;
   line-height: 24px;
+  max-width: 320px;
 `;
