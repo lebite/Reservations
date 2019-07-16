@@ -23,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
 
 export const ModuleWrapper = styled.aside`
   width: 320px;
+  margin: 0 0 0 1rem;
   display: flex;
 `;
 
