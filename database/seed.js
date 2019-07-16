@@ -3,8 +3,9 @@
  */
 const moment = require('moment');
 
-const { Reservation } = require('./index');
-const { Restaurant } = require('./index');
+const { Reservation } = require('./reservation');
+const { Restaurant } = require('./restaurant');
+const { db } = require('./index');
 
 /**
  * From: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -83,14 +84,20 @@ function seedReservations() {
     }
   }
 
-  // use mongoose models to insert/save
-  restaurants.forEach((restaurant) => {
-    new Restaurant(restaurant).save();
+  Reservation.insertMany(reservations, function (err) {
+    Restaurant.insertMany(restaurants, function (err) {
+      db.close();
+    })
   });
 
-  reservations.forEach((reservation) => {
-    new Reservation(reservation).save();
-  });
+  // use mongoose models to insert/save
+  // restaurants.forEach((restaurant) => {
+  //   new Restaurant(restaurant).save();
+  // });
+  //
+  // reservations.forEach((reservation) => {
+  //   new Reservation(reservation).save();
+  // });
 }
 
 seedReservations();
