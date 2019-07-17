@@ -42,15 +42,15 @@ function seedReservations() {
     { hour: 21, minute: 0 },
   ];
   // Time interval restaurant expects between bookings
-  const timeIntervals = [5, 10, 15, 30];
+  const timeIntervals = [15, 30, 45, 60];
 
   // Other useful constants
   const minSeating = 15;
-  const maxSeating = 100;
+  const maxSeating = 50;
   const minPartySize = 4;
   const maxPartySize = 10;
 
-  // create 100 restaurants and 2 to 10 reservations per restaurant
+  // create 100 restaurants and 5 to 55 reservations per restaurant
   const restaurants = [];
   const reservations = [];
 
@@ -66,7 +66,7 @@ function seedReservations() {
     };
     restaurants.push(newRestaurant);
 
-    const numReservations = getRandomInt(2, 10);
+    const numReservations = getRandomInt(5, 55);
 
     for (let j = 0; j < numReservations; j += 1) {
       // use Moment.js to create valid booking time
@@ -85,9 +85,17 @@ function seedReservations() {
   }
 
   Reservation.insertMany(reservations, function (err) {
-    Restaurant.insertMany(restaurants, function (err) {
+    if (err) {
+      console.log(err);
       db.close();
-    })
+    } else {
+      Restaurant.insertMany(restaurants, function (err) {
+        if (err) {
+          console.log(err);
+        }
+        db.close();
+      })
+    }
   });
 }
 
