@@ -19,11 +19,12 @@ import timeUtils from '../utils/timeUtils';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const randId = Math.floor(Math.random() * 100);
+    let id = location.pathname.slice(1);
+    id = (id !== '') ? parseInt(id) : Math.floor(Math.random() * 100);
     this.state = {
-      restaurantId: randId,
+      restaurantId: id,
       restaurant: {
-        id: randId,
+        id: id,
         openTime: {
           hour: 0,
           minute: 0,
