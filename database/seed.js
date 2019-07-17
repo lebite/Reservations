@@ -89,15 +89,6 @@ function seedReservations() {
       db.close();
     })
   });
-
-  // use mongoose models to insert/save
-  // restaurants.forEach((restaurant) => {
-  //   new Restaurant(restaurant).save();
-  // });
-  //
-  // reservations.forEach((reservation) => {
-  //   new Reservation(reservation).save();
-  // });
 }
 
 seedReservations();

@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const moment = require('moment');
 
-const { Reservation } = require('../database/index');
-const { Restaurant } = require('../database/index');
+const { Reservation } = require('../database/reservation');
+const { Restaurant } = require('../database/restaurant');
+const { db } = require('../database/index');
 
 const app = express();
 
