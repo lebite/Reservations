@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   app:
     container_name: app
@@ -6,8 +6,6 @@ services:
     build: .
     ports:
       - "3002:3002"
-    environment:
-      WAIT_HOSTS: mongo:27017
     depends_on:
       - mongo
   mongo:
