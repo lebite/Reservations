@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button } from '../../theme/buttons';
+import { FindButton } from '../../theme/buttons';
 
 const ShowButton = () => (
   <div>
-    <Button>Find a Table</Button>
+    <FindButton>Find a Table</FindButton>
   </div>
 );
 

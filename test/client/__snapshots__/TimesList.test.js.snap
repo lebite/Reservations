@@ -4,7 +4,7 @@ exports[`ListTimes component renders with no errors when valid bookings array pa
 <div>
   <div>
     <span
-      className="global__SectionTitle-vsm6zv-4 kHMmiw"
+      className="global__SectionTitle-vsm6zv-5 cAvvby"
     >
       Select a time:
     </span>

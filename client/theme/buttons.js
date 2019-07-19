@@ -18,7 +18,7 @@ export const TimeButton = styled.button`
   }
 `;
 
-export const Button = styled.button`
+export const FindButton = styled.button`
   cursor: pointer;
   padding: .75rem 1rem;
   text-decoration: none;
@@ -31,6 +31,5 @@ export const Button = styled.button`
 
   &:hover, &:active ._6f29c471 {
     background: #eea0a5;
-    border: 2px solid #eea0a5;
   }
 `;

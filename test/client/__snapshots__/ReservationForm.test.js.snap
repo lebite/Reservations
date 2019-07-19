@@ -14,12 +14,12 @@ exports[`ReservationForm component renders with no errors when valid restaurant 
       Party Size
     </label>
     <select
-      className="form__Select-sc-1u23csf-2 fEMCHC"
+      className="form__Select-sc-1u23csf-2 eecyHz"
       id="party"
     />
   </div>
   <section
-    className="global__RowWrapper-vsm6zv-2 jTnlro"
+    className="global__RowWrapper-vsm6zv-3 kTkVBY"
   >
     <div>
       <label
@@ -29,8 +29,8 @@ exports[`ReservationForm component renders with no errors when valid restaurant 
         Date
       </label>
       <input
-        className="form__CalendarInput-sc-1u23csf-3 joKqVc"
-        defaultValue="07-15-2019"
+        className="form__CalendarInput-sc-1u23csf-4 fRsLHX"
+        defaultValue="07-19-2019"
         id="date"
         name="date"
         type="date"
@@ -44,28 +44,9 @@ exports[`ReservationForm component renders with no errors when valid restaurant 
         Time
       </label>
       <select
-        className="form__Select-sc-1u23csf-2 fEMCHC"
+        className="form__Select-sc-1u23csf-2 form__TimeSelect-sc-1u23csf-3 eJvGuH"
         id="time"
-      >
-        <option>
-          12:00 AM
-        </option>
-        <option>
-          12:00 AM
-        </option>
-        <option>
-          12:00 AM
-        </option>
-        <option>
-          12:00 AM
-        </option>
-        <option>
-          12:00 AM
-        </option>
-        <option>
-          12:00 AM
-        </option>
-      </select>
+      />
     </div>
   </section>
   <br />

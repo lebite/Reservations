@@ -21,10 +21,12 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export const ModuleWrapper = styled.aside`
+export const ModuleWrapper = styled.div`
   width: 320px;
   margin: 0 0 0 1rem;
   display: flex;
+  z-index: 2;
+  box-sizing: border-box;
 `;
 
 export const AppWrapper = styled.section`
@@ -77,8 +79,8 @@ export const SectionTitle = styled.span`
 
 export const ModuleTitle = styled.h1`
   text-align: center;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  line-height: 24px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  line-height: 48px;
   max-width: 320px;
 `;
