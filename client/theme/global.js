@@ -26,6 +26,7 @@ export const ModuleWrapper = styled.div`
   margin: 0 0 0 1rem;
   display: flex;
   z-index: 2;
+  position: relative;
   box-sizing: border-box;
 `;
 

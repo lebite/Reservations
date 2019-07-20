@@ -10,7 +10,7 @@ const DatePicker = () => (
       type="date"
       name="date"
       id="date"
-      defaultValue={moment().format('MM-DD-YYYY')}
+      placeholder={moment().calendar()}
     />
   </div>
 );

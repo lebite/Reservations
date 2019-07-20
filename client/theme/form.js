@@ -1,3 +1,4 @@
+//import DownSVG from '../icons/DownSVG.svg';
 import styled from 'styled-components';
 
 export const Label = styled.label`
@@ -42,11 +43,12 @@ export const TimeSelect = styled(Select)`
 
 export const CalendarInput = styled.input`
   cursor: pointer;
+  font-family: inherit;
+  font-size: .875rem;
   -webkit-box-flex: 1;
   -ms-flex: 1 50%;
   flex: 1 50%;
   width: 130px;
-  background-color: #fff;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: -webkit-box;
@@ -57,7 +59,25 @@ export const CalendarInput = styled.input`
   border: 0;
   border-bottom: 1px solid #d8d9db;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     border-bottom: 2px solid #da3743;
+  }
+  
+  &::-webkit-clear-button {
+    visibility: hidden;
+    display: none;
+  }
+  &::-webkit-inner-spin-button {
+    visibility: hidden;
+    display: none;
+  }
+  &::-webkit-calendar-picker-indicator {
+    color: #d8d9db;
+    font-size: .875rem;
+    visibility: visible;
+    
+    &:active {
+      color: #da3743;
+    }
   }
 `;

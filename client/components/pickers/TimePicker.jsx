@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import { Label, TimeSelect } from '../../theme/form';
 import timeUtils from '../../utils/timeUtils';
 
+const generateKey = (pre) => {
+  return `${ pre }_${ new Date().getTime() }`;
+}
+
 const TimePicker = ({ openTime, closeTime, timeIntervals }) => (
   <div>
     <Label htmlFor="time">Time</Label>
@@ -14,7 +18,7 @@ const TimePicker = ({ openTime, closeTime, timeIntervals }) => (
           closeTime,
           timeIntervals,
         }).map(slot => (
-          <option>
+          <option key={generateKey(slot.toString())}>
             {slot.format('LT')}
           </option>
         ))

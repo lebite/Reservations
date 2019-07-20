@@ -8,6 +8,7 @@ const { Reservation } = require('../database/reservation');
 const { Restaurant } = require('../database/restaurant');
 const { db } = require('../database/index');
 
+const expressStaticGzip = require('express-static-gzip');
 const app = express();
 
 app.use(morgan('dev'));
@@ -15,6 +16,13 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '/../public/')));
 app.use('/:restaurant_id', express.static(path.join(__dirname, '/../public/')));
+app.use('/', expressStaticGzip('/../public/', {
+  enableBrotli: true,
+    orderPreference: ['br', 'gz'],
+    setHeaders: function (res, path) {
+    res.setHeader("Cache-Control", "public, max-age=31536000");
+  }
+}));
 
 app.get('/:restaurant_id/reservations', (req, res) => {
   const restaurantId = req.params.restaurant_id;
