@@ -6,6 +6,7 @@ const SRC_DIR = path.join(__dirname, '/client');
 const DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
+  mode: 'production',
   plugins: [
     new CompressionPlugin({
       filename: '[path].gz[query]',
@@ -21,7 +22,6 @@ module.exports = {
       minRatio: 0.8
     })
   ],
-  mode: 'production',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
@@ -35,10 +35,6 @@ module.exports = {
         use: [
           'babel-loader',
         ],
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline'
       },
     ],
   },

@@ -20,9 +20,10 @@ app.use('/', expressStaticGzip('/../public/', {
   enableBrotli: true,
     orderPreference: ['br', 'gz'],
     setHeaders: function (res, path) {
-    res.setHeader("Cache-Control", "public, max-age=31536000");
-  }
-}));
+      res.setHeader("Cache-Control", "public, max-age=31536000");
+    }
+  })
+);
 
 app.get('/:restaurant_id/reservations', (req, res) => {
   const restaurantId = req.params.restaurant_id;
