@@ -77,6 +77,7 @@ function seedReservations() {
         .add(minuteOffset, 'minute');
 
       reservations.push({
+        reservation_id: j,
         booking_time: randomTime,
         party_qty: getRandomInt(1, newRestaurant.max_party_size),
         restaurant_id: i,

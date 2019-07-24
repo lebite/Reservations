@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const reservationSchema = mongoose.Schema({
+  reservation_id: Number,
   booking_time: Date,
   party_qty: Number,
   restaurant_id: Number,
