@@ -46,7 +46,8 @@ _Note: In order for module to display, your index.html must have a `div` with `i
     "time_intervals": <number>,
     "max_seating": <number>,
     "max_party_size": <number>
-    "max_time_range": <number>
+    "max_time_range": <number>,
+    "times booked": <number>
   },
   "bookings": [
     {

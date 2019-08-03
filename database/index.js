@@ -1,9 +1,28 @@
-const mongoose = require('mongoose');
+const mysql = require('mysql');
 
-const db = mongoose.connection;
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'Reservations',
+});
 
-mongoose.connect('mongodb://localhost:27017/reservation_module', {useNewUrlParser: true});
+connection.connect((err) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('connected to Reservations');
+  }
+});
 
-db.on('error', console.error.bind(console, 'connection error:'));
 
-module.exports.db = db;
+
+const ;
+
+const ;
+
+const ;
+
+const ;
+
+module.exports.connection = connection;
