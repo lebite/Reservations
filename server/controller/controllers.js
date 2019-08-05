@@ -1,26 +1,27 @@
+/* eslint-disable prefer-template */
 const { connection } = require('../../database/index');
 
 module.exports = {
   createReservation: (req, res) => { // untested query
     const data = req.body;
-    const sql = 'INSERT INTO `Reservations`(`reserved_date`, `party_size`, `timeSlot`, `Restaurant_Id`, `first_name`, `last_name`, `email`, `phone`, `requests`, `occasion`) VALUES (?, ?, ?, ?, ?. ?, ?, ?, ?, ?)';
-    connection.query(sql, [data.reserved_date, data.party_size, data.timeSlot, data.Restaurant_Id, data.first_name, data.last_name, data.email, data.phone, data.requests, data.occasion], (err) => {
+    const restaurant = req.params.restaurant_id;
+    const sql = 'INSERT INTO `Reservations`(reserved_date, party_size, timeSlot, Restaurant_Id, first_name, last_name, email, phone, requests, occasion) VALUES (' + connection.escape(data.reserved_date) + ',' + connection.escape(data.party_size) + ',' + connection.escape(data.timeSlot) + ',' + connection.escape(restaurant) + ',' + connection.escape(data.first_name) + ',' + connection.escape(data.last_name) + ',' + connection.escape(data.email) + ',' + connection.escape(data.phone) + ',' + connection.escape(data.requests) + ',' + connection.escape(data.occasion) + ')';
+    connection.query(sql, (err, results) => {
       if (err) {
         console.log(err);
-        res.sendStatus(404);
         res.send(err);
       } else {
-        res.sendStatus(201);
+        res.send(results);
       }
     });
   },
   getAllReservations: (req, res) => { // probably works
     const restaurantId = req.params.restaurant_id;
-    const sql = 'SELECT * FROM `Reservations` WHERE `Restaurant_Id` = ?';
-    connection.query(sql, [restaurantId], (err, results) => {
+    const date = req.query.reserved_date;
+    const sql = 'SELECT * FROM `Reservations` WHERE `Restaurant_Id` = ? and reserved_date = ?';
+    connection.query(sql, [restaurantId, date], (err, results) => {
       if (err) {
         console.log(err);
-        res.sendStatus(404);
         res.send(err);
       } else {
         res.send(results);
@@ -34,7 +35,6 @@ module.exports = {
     connection.query(sql, (err, result) => {
       if (err) {
         console.log(err);
-        res.statusCode(404);
       } else {
         res.send(result);
       }
@@ -46,7 +46,6 @@ module.exports = {
     connection.query(sql, [id], (err, result) => {
       if (err) {
         console.log(err);
-        res.sendStatus(404);
         res.send(err);
       } else {
         res.send(result);

@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const { getAllReserverations } = require('./controller/controllers');
+const { getAllReservations } = require('./controller/controllers');
 const { createReservation } = require('./controller/controllers');
 const { updateReservation } = require('./controller/controllers');
 const { deleteReservation } = require('./controller/controllers');
@@ -26,7 +26,7 @@ app.use('/', expressStaticGzip('/../public/', {
 }));
 
 app.get('/:restaurant_id/reservations', (req, res) => {
-  getAllReserverations(req, res);
+  getAllReservations(req, res);
 });
 
 app.post('/:restaurant_id/reservations', (req, res) => {
