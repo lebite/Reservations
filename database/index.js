@@ -15,14 +15,4 @@ connection.connect((err) => {
   }
 });
 
-
-
-const ;
-
-const ;
-
-const ;
-
-const ;
-
 module.exports.connection = connection;
