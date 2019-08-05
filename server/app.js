@@ -2,11 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
-const moment = require('moment');
 
-const { connection } = require('../database/reservation');
-const { getAllReservations } = require('../database/restaurant');
-const { db } = require('../database/index');
+const { getAllReserverations } = require('./controller/controllers');
+const { createReservation } = require('./controller/controllers');
+const { updateReservation } = require('./controller/controllers');
+const { deleteReservation } = require('./controller/controllers');
+
+
 
 const expressStaticGzip = require('express-static-gzip');
 
@@ -19,22 +21,24 @@ app.use(express.static(path.join(__dirname, '/../public/')));
 app.use('/:restaurant_id', express.static(path.join(__dirname, '/../public/')));
 app.use('/', expressStaticGzip('/../public/', {
   enableBrotli: true,
-    orderPreference: ['br', 'gz'],
-    setHeaders: function (res, path) {
-      res.setHeader("Cache-Control", "public, max-age=31536000");
-    }
-  })
-);
+  orderPreference: ['br', 'gz'],
+  setHeaders: function (res, path) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+  },
+}));
 
-app.get('/:restaurant_id/reservations',);
+app.get('/:restaurant_id/reservations', (req, res) => {
+  getAllReserverations(req, res);
+});
 
-app.post('/:restaurant_id/reservations', 
-  
-app.get('/:restaurant_id/reservations/count', (req, res) => {
-  const restaurantId = req.params.restaurant_id;
+app.post('/:restaurant_id/reservations',  (req, res) => {
+  createReservation(req, res);
+});
+// app.get('/:restaurant_id/reservations/count', (req, res) => {
+//   const restaurantId = req.params.restaurant_id;
 
 app.delete('/:restaurant_id/reservations/:reservation_id', (req, res) => {
-  crvations');
-
+  deleteReservation(req, res);
 });
+
 module.exports = app;
