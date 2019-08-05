@@ -8,8 +8,6 @@ const { createReservation } = require('./controller/controllers');
 const { updateReservation } = require('./controller/controllers');
 const { deleteReservation } = require('./controller/controllers');
 
-
-
 const expressStaticGzip = require('express-static-gzip');
 
 const app = express();
@@ -31,11 +29,14 @@ app.get('/:restaurant_id/reservations', (req, res) => {
   getAllReserverations(req, res);
 });
 
-app.post('/:restaurant_id/reservations',  (req, res) => {
+app.post('/:restaurant_id/reservations', (req, res) => {
   createReservation(req, res);
 });
 // app.get('/:restaurant_id/reservations/count', (req, res) => {
 //   const restaurantId = req.params.restaurant_id;
+app.put('/:restaurant_id/reservations/:reservation_id', (req, res) => {
+  updateReservation(req, res);
+});
 
 app.delete('/:restaurant_id/reservations/:reservation_id', (req, res) => {
   deleteReservation(req, res);
