@@ -1,25 +1,15 @@
 /* eslint-disable prefer-template */
 const { connection } = require('../../database/index');
+const faker = require('faker');
 
 module.exports = {
   createReservation: (req, res) => { // untested query
     // const data = req.body;
-    const restaurant = Math.floor(Math.random() * Math.floor(1000000));
-    const data = {
-      reserved_date: 20190805,
-      party_size: 3,
-      timeSlot: 10,
-      Restaurant_Id: restaurant,
-      first_name: 'yunyun',
-      last_name: 'liu',
-      email: 'asdfasd@',
-      phone: '234134456'
-
-    }
-    // const restaurant = req.params.restaurant_id;
-    
-    const sql = 'INSERT INTO `Reservations`(reserved_date, party_size, timeSlot, Restaurant_Id, first_name, last_name, email, phone, requests, occasion) VALUES (' + connection.escape(data.reserved_date) + ',' + connection.escape(data.party_size) + ',' + connection.escape(data.timeSlot) + ',' + connection.escape(restaurant) + ',' + connection.escape(data.first_name) + ',' + connection.escape(data.last_name) + ',' + connection.escape(data.email) + ',' + connection.escape(data.phone) + ',' + connection.escape(data.requests) + ',' + connection.escape(data.occasion) + ')';
-    connection.query(sql, (err, results) => {
+    const dateString = faker.date.between('2019-05-28', '2019-08-28').toLocaleDateString();
+    const restaurant = req.params.restaurant_id;
+    const sql = 'INSERT INTO Reservations (reserved_date, party_size, timeSlot, Restaurant_Id, first_name, last_name, email, phone, requests, occasion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [dateString, 2, 14, restaurant, 'diana', 'yu', 'vesper_astrum@gmail.com', '510-234-4256', 'dark blue roses', 'birthday'];
+    connection.query(sql, values, (err, results) => {
       if (err) {
         console.log(err);
         res.send(err);
@@ -29,10 +19,8 @@ module.exports = {
     });
   },
   getAllReservations: (req, res) => { // probably works
-    // const restaurantId = req.params.restaurant_id;
-    const restaurantId = Math.floor(Math.random() * Math.floor(1000000));
-    // const date = req.query.reserved_date;
-    const date = 20190528;
+    const restaurantId = req.params.restaurant_id;
+    const date = req.body;
     const sql = 'SELECT * FROM `Reservations` WHERE `Restaurant_Id` = ? and reserved_date = ?';
     connection.query(sql, [restaurantId, date], (err, results) => {
       if (err) {
