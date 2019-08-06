@@ -20,7 +20,8 @@ module.exports = {
   },
   getAllReservations: (req, res) => { // probably works
     const restaurantId = req.params.restaurant_id;
-    const date = req.body;
+    // eslint-disable-next-line radix
+    const date = req.query.reserved_date;
     const sql = 'SELECT * FROM `Reservations` WHERE `Restaurant_Id` = ? and reserved_date = ?';
     connection.query(sql, [restaurantId, date], (err, results) => {
       if (err) {
@@ -30,15 +31,20 @@ module.exports = {
       }
     });
   },
+  getReservation: (req, res) => {
+    const id = req.params.reservation_id;
+    const sql = `select * from Reservations where reservation_id = ${id}`;
+    connection.query(sql, (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    });
+  },
   updateReservation: (req, res) => { // untested query
-    // const id = req.params.reservation_id;
-    const id = Math.floor(Math.random() * Math.floor(23499417));
-    // const data = req.body;
-    const data = {
-      timeSlot: 13,
-      reserved_date: 20200805,
-      party_size: 2,
-    };
+    const id = req.params.reservation_id;
+    const data = req.body;
     const sql = 'UPDATE Reservations SET timeSlot = ' + connection.escape(data.timeSlot) + 'reserved_date = ' + connection.escape(data.reserved_date) + 'party_size = ' + connection.escape(data.party_size) + ' where reservation_id = ' + connection.escape(id);
     connection.query(sql, (err, result) => {
       if (err) {
@@ -49,8 +55,7 @@ module.exports = {
     });
   },
   deleteReservation: (req, res) => { // works
-    // const id = req.query.reservation_id;
-    const id = Math.floor(Math.random() * Math.floor(23499417));
+    const id = req.query.reservation_id;
     const sql = 'DELETE FROM Reservations WHERE Reservation_Id = ?';
     connection.query(sql, [id], (err, result) => {
       if (err) {

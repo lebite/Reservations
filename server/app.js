@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const { getAllReservations } = require('./controller/controllers');
+const { getReservation } = require('./controller/controllers');
 const { createReservation } = require('./controller/controllers');
 const { updateReservation } = require('./controller/controllers');
 const { deleteReservation } = require('./controller/controllers');
@@ -25,15 +26,16 @@ app.use('/', expressStaticGzip('/../public/', {
   },
 }));
 
-app.get('/:restaurant_id/reservations', (req, res) => {
-  getAllReservations(req, res);
+app.get('/reservations/:reservation_id', (req, res) => {
+  getReservation(req, res);
 });
+
 
 app.post('/:restaurant_id/reservations', (req, res) => {
   createReservation(req, res);
 });
-// app.get('/:restaurant_id/reservations/count', (req, res) => {
-//   const restaurantId = req.params.restaurant_id;
+
+
 app.put('/:restaurant_id/reservations/:reservation_id', (req, res) => {
   updateReservation(req, res);
 });
